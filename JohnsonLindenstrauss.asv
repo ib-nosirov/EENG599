@@ -8,18 +8,17 @@
 
 D = 80000;
 m = 8000;
-ep = 0.1; % 0.1
+ep = 0.01; % 0.1
 % since m > 32 log n/epsilon^2, n < 11
-n = 10; % 10
+n = 20; % 10
 A = normrnd(0,1/sqrt(m),[m,D]);
 V = rand(D,n);
 
 for ii=1:n-1
     %lower bound
-    lowerBound = (1-ep)*norm(V(:,ii) - V(:,ii+1))^2;
+    lowerBound = (1-ep)*norm(V(:,ii) - V(:,ii+1))^2
     % middle quantity
-    middle = norm(A*V(:,ii) - A*V(:,ii+1))^2;
+    middle = norm(A*V(:,ii) - A*V(:,ii+1))^2
     % upper bound
-    upperBound = (1+ep)*norm(V(:,ii) - V(:,ii+1))^2;
-    lowerBound < middle && middle < upperBound
+    upperBound = (1+ep)*norm(V(:,ii) - V(:,ii+1))^2
 end
